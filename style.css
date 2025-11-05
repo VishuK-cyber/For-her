@@ -93,41 +93,44 @@ body::before {
   opacity: 0.45;
   z-index: 1;
 }
-/* --- Mobile Fixes --- */
+/* --- MOBILE VIEW FIX --- */
 @media (max-width: 600px) {
 
   #container {
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
   }
 
   .image-section {
-    max-width: 90%;
-    margin: 0 auto;
-  }
-
-  .image-section img.polaroid {
-    width: 100%;
-    height: auto;
-  }
-
-  .top-text, .bottom-text {
-    font-size: 1rem;
+    width: 90vw;
     text-align: center;
-    padding: 0 5px;
+  }
+
+  .polaroid {
+    width: 80vw;      /* bigger image */
+    max-width: 350px; /* still looks clean */
+    margin: 0 auto;
+    display: block;
+  }
+
+  .top-text,
+  .bottom-text {
+    font-size: 1.1rem;   /* readable */
+    text-shadow: 0 0 8px rgba(0,0,0,0.6);
   }
 
   #visualizer {
-    width: 100% !important;
-    height: 30vh !important;
+    width: 100vw !important;
+    height: 40vh !important; /* bigger visualizer */
+    margin-top: 10px;
   }
 
-  body {
-    background-size: cover;
-    background-position: center;
-  }
 }
+
+
 
 
 
