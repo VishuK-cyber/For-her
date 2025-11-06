@@ -175,6 +175,47 @@ body::after {
   position: relative;
   z-index: 50;
 }
+/* --- FINAL FIXED LAYER STACK --- */
+#bg {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -3;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  backdrop-filter: blur(14px);
+  background: rgba(0,0,0,0.35);
+  pointer-events: none;
+  z-index: -2;
+}
+
+/* Visualizer always below content */
+#visualizer {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Content always above */
+#container,
+.image-section,
+.polaroid,
+.top-text,
+.bottom-text {
+  position: relative;
+  z-index: 5;
+}
+
+
 
 
 
