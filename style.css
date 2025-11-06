@@ -45,21 +45,7 @@ body {
 }
 
 /* Main container sits above blur */
-#container {
-  position: relative;
-  z-index: 30;
-  width: 100%;
-  max-width: 760px;
-  padding: 28px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:12px;
-  pointer-events: auto;
-  opacity: 0;
-  transition: opacity 1.2s ease;
-}
+
 
 /* Image + texts */
 .image-section {
@@ -214,6 +200,11 @@ body::after {
   position: relative;
   z-index: 5;
 }
+#container, .image-section, .top-text, .polaroid, .bottom-text, #visualizer {
+  animation-fill-mode: forwards;
+}
+
+
 
 
 
