@@ -131,6 +131,43 @@ body::before {
     margin-top: 3vh;
   }
 }
+/* ✨ Smooth Fade In */
+#container, #start-screen, .image-section, #visualizer {
+  animation: fadeIn 2s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* 🌙 Slow Romantic Background Zoom */
+body {
+  animation: bgZoom 35s ease-in-out infinite alternate;
+}
+
+@keyframes bgZoom {
+  from { background-size: 130%; }
+  to   { background-size: 160%; }
+}
+
+/* 🕊️ Polaroid Gentle Floating Effect */
+.polaroid {
+  animation: floaty 6s ease-in-out infinite;
+}
+
+@keyframes floaty {
+  0% { transform: translateY(0px) rotate(-1deg); }
+  50% { transform: translateY(-8px) rotate(1deg); }
+  100% { transform: translateY(0px) rotate(-1deg); }
+}
+
+/* ✨ Visualizer Glow */
+#visualizer {
+  filter: drop-shadow(0 0 18px rgba(255, 255, 255, 0.35));
+}
+
+
 
 
 
