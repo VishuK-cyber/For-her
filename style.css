@@ -94,11 +94,15 @@ body {
 }
 
 /* cinematic fades stronger & staggered (more noticeable) */
-#container, .image-section, .top-text, .polaroid, .bottom-text, #visualizer {
-  opacity: 0;
+#container, .image-section, .top-text, .bottom-text, #visualizer {
   transform: translateY(18px) scale(0.998);
   animation: cinematicIn 1.3s cubic-bezier(.22,.8,.3,1) forwards;
 }
+
+.polaroid {
+  animation: cinematicIn 1.6s cubic-bezier(.22,.8,.3,1) forwards, floaty 7.5s ease-in-out infinite;
+}
+
 .image-section        { animation-delay: 0.45s; }
 .top-text             { animation-delay: 0.70s; }
 .polaroid             { animation-delay: 0.95s; }
@@ -203,6 +207,19 @@ body::after {
 #container, .image-section, .top-text, .polaroid, .bottom-text, #visualizer {
   animation-fill-mode: forwards;
 }
+#visualizer {
+  z-index: 1 !important;
+}
+
+.image-section,
+.polaroid,
+.top-text,
+.bottom-text {
+  z-index: 5 !important;
+  position: relative;
+}
+
+
 
 
 
