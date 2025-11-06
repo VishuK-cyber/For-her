@@ -166,6 +166,85 @@ body {
 #visualizer {
   filter: drop-shadow(0 0 18px rgba(255, 255, 255, 0.35));
 }
+/* -----------------------
+  FINAL MAGIC + MOBILE FIX
+  Paste THIS ENTIRE BLOCK at the BOTTOM of style.css
+------------------------*/
+
+/* make sure page covers mobile safely */
+html, body {
+  height: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #0b0b0b; /* fallback so no white flashes */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* mobile-friendly background: avoid fixed white bands on Android */
+body {
+  background-image: url("background.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;           /* ensure the image covers */
+  background-attachment: scroll;    /* important for mobile browsers */
+  will-change: transform;
+}
+
+/* stronger, slower, staggered fades for cinematic feel */
+#container, .image-section, #visualizer, .top-text, .bottom-text {
+  opacity: 0;
+  transform: translateY(18px) scale(0.995);
+  animation: cinematicFade 1.6s cubic-bezier(.22,.8,.3,1) forwards;
+}
+
+/* stagger */
+.image-section { animation-delay: 0.45s; }
+.top-text      { animation-delay: 0.75s; }
+.polaroid      { animation-delay: 0.9s; transform-origin: center; }
+.bottom-text   { animation-delay: 1.05s; }
+#visualizer    { animation-delay: 1.2s; }
+
+/* bigger and more noticeable movement in fade */
+@keyframes cinematicFade {
+  from { opacity: 0; transform: translateY(20px) scale(0.995); filter: blur(6px); }
+  40%  { opacity: 0.6; transform: translateY(6px) scale(0.998); filter: blur(2px); }
+  to   { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+
+/* soft vignette & warm color grade to add emotional tint */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, rgba(255,220,170,0.06) 0%, rgba(0,0,0,0.55) 80%);
+  mix-blend-mode: overlay;
+  z-index: 0;
+}
+
+/* ensure content is above the overlay */
+#container { position: relative; z-index: 5; }
+
+/* visualizer glow + slight blur for softness */
+#visualizer {
+  filter: drop-shadow(0 0 24px rgba(255,200,140,0.22)) blur(0.2px);
+  opacity: 0.9;
+}
+
+/* make polaroid subtly bigger on mobile without touching desktop */
+@media (max-width: 600px) {
+  .polaroid { width: 92vw !important; max-width: none; }
+  .top-text, .bottom-text { font-size: 1.35rem; }
+  #visualizer { height: 44vh !important; }
+}
+
+/* tiny finishing touches */
+.polaroid { transition: transform 0.6s ease; }
+.polaroid:hover { transform: translateY(-6px) scale(1.01); }
+
+
 
 
 
