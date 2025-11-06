@@ -93,42 +93,46 @@ body::before {
   opacity: 0.45;
   z-index: 1;
 }
-/* --- MOBILE VIEW FIX --- */
+/* --- MOBILE FIX (REAL) --- */
 @media (max-width: 600px) {
 
-  #container {
+  body, #container {
     width: 100vw;
     height: 100vh;
-    padding: 0;
-    justify-content: center;
-    align-items: center;
+    overflow: hidden;
   }
 
   .image-section {
-    width: 90vw;
-    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2vh;
   }
 
   .polaroid {
-    width: 80vw;      /* bigger image */
-    max-width: 350px; /* still looks clean */
+    width: 90vw;             /* BIG polaroid */
+    max-width: none;
     margin: 0 auto;
-    display: block;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.45);
   }
 
   .top-text,
   .bottom-text {
-    font-size: 1.1rem;   /* readable */
-    text-shadow: 0 0 8px rgba(0,0,0,0.6);
+    font-size: 1.35rem;      /* Larger text */
+    text-align: center;
   }
 
   #visualizer {
     width: 100vw !important;
-    height: 40vh !important; /* bigger visualizer */
-    margin-top: 10px;
+    height: 48vh !important;  /* BIG visualizer */
+    display: block;
+    margin-top: 3vh;
   }
-
 }
+
+
 
 
 
