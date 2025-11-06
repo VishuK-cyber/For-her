@@ -170,6 +170,13 @@ body::after {
   pointer-events: none;
   z-index: -2;
 }
+/* Bring polaroid & text to front safely */
+.image-section, .polaroid, .top-text, .bottom-text {
+  position: relative;
+  z-index: 50;
+}
+
+
 
 
 
