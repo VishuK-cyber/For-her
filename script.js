@@ -15,7 +15,17 @@ function startAudio() {
   source.connect(analyser);
   analyser.connect(audioCtx.destination);
 
-  audio.play();
+  audio.volume = 0;
+audio.play();
+
+let fadeIn = setInterval(() => {
+  if (audio.volume < 0.7) {
+    audio.volume += 0.02;
+  } else {
+    clearInterval(fadeIn);
+  }
+}, 120);
+
 
   animate();
 }
@@ -49,4 +59,5 @@ document.getElementById("start-screen").addEventListener("click", () => {
   setTimeout(() => (document.getElementById("start-screen").style.display = "none"), 300);
   startAudio();
 });
+
 
