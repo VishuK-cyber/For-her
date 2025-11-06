@@ -1,3 +1,13 @@
+/* REAL BACKGROUND FIX (Mobile Safe, No White Lines) */
+#bg {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;   /* fills screen perfectly */
+  z-index: -3;         /* stays behind everything */
+}
+
 /* ---------------------
   Full safe stylesheet
   — Replace entire style.css
@@ -10,28 +20,12 @@ html,body { height:100%; width:100%; }
 
 body {
   font-family: 'Poppins', sans-serif;
-  background-image: url("background.jpg");
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: scroll; /* avoids mobile white bands */
   color: #fff;
   display:flex;
   align-items:center;
   justify-content:center;
   overflow:hidden;
   position:relative;
-}
-
-/* Soft stable blur layer (behind content) */
-body::before {
-  content:"";
-  position:fixed;
-  inset:0;
-  background: rgba(0,0,0,0.45); /* darken for legibility */
-  backdrop-filter: blur(10px);
-  z-index: 0;
-  pointer-events:none;
 }
 
 /* Start screen overlay (tap to begin) */
@@ -165,6 +159,19 @@ body::before {
   .bottom-text { font-size: 1.05rem; }
   #visualizer { height: 46vh !important; }
 }
+/* SOFT BLUR + DARKEN OVERLAY (Mobile Safe) */
+#bg::after,
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(14px);
+  pointer-events: none;
+  z-index: -2;
+}
+
+
 
 
 
